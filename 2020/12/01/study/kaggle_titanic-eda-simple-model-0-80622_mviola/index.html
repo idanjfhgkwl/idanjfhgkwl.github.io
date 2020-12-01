@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>캐글 Titanic EDA + Simple Model [0.80622] 분석 - 제목</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="제목"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="제목"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta description="Titanic EDA + Simple Model [0.80622]Introductionhttps:&amp;#x2F;&amp;#x2F;www.kaggle.com&amp;#x2F;mviola&amp;#x2F;titanic-eda-simple-model-0-80622이 노트북은 Titanic : Machine Learning from Disaster 대회에 대한 저의 첫 번째 접근 방식을 다룹니다 ( 자세한 내용은 여기 에서"><meta property="og:type" content="blog"><meta property="og:title" content="캐글 Titanic EDA + Simple Model [0.80622] 분석"><meta property="og:url" content="https://github.com/idanjfhgkwl/idanjfhgkwl.github.io/2020/12/01/study/kaggle_titanic-eda-simple-model-0-80622_mviola/"><meta property="og:site_name" content="제목"><meta property="og:description" content="Titanic EDA + Simple Model [0.80622]Introductionhttps:&amp;#x2F;&amp;#x2F;www.kaggle.com&amp;#x2F;mviola&amp;#x2F;titanic-eda-simple-model-0-80622이 노트북은 Titanic : Machine Learning from Disaster 대회에 대한 저의 첫 번째 접근 방식을 다룹니다 ( 자세한 내용은 여기 에서"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_21_0.png"><meta property="og:image" content="https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_27_1.png"><meta property="og:image" content="https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_31_0.png"><meta property="og:image" content="https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_34_0.png"><meta property="og:image" content="https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_37_1.png"><meta property="og:image" content="https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_39_0.png"><meta property="og:image" content="https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_41_0.png"><meta property="og:image" content="https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_46_1.png"><meta property="og:image" content="https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_48_1.png"><meta property="og:image" content="https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_55_1.png"><meta property="og:image" content="https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_57_0.png"><meta property="og:image" content="https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_68_0.png"><meta property="og:image" content="https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_75_1.png"><meta property="og:image" content="https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_78_1.png"><meta property="og:image" content="https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_83_0.png"><meta property="og:image" content="https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_87_0.png"><meta property="article:published_time" content="2020-12-01T01:06:14.981Z"><meta property="article:modified_time" content="2020-12-01T01:10:02.464Z"><meta property="article:author" content="JustY"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_21_0.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/idanjfhgkwl/idanjfhgkwl.github.io/2020/12/01/study/kaggle_titanic-eda-simple-model-0-80622_mviola/"},"headline":"제목","image":["https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_21_0.png","https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_27_1.png","https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_31_0.png","https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_34_0.png","https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_37_1.png","https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_39_0.png","https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_41_0.png","https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_46_1.png","https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_48_1.png","https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_55_1.png","https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_57_0.png","https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_68_0.png","https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_75_1.png","https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_78_1.png","https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_83_0.png","https://github.com/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_87_0.png"],"datePublished":"2020-12-01T01:06:14.981Z","dateModified":"2020-12-01T01:10:02.464Z","author":{"@type":"Person","name":"JustY"},"description":"Titanic EDA + Simple Model [0.80622]Introductionhttps:&#x2F;&#x2F;www.kaggle.com&#x2F;mviola&#x2F;titanic-eda-simple-model-0-80622이 노트북은 Titanic : Machine Learning from Disaster 대회에 대한 저의 첫 번째 접근 방식을 다룹니다 ( 자세한 내용은 여기 에서"}</script><link rel="canonical" href="https://github.com/idanjfhgkwl/idanjfhgkwl.github.io/2020/12/01/study/kaggle_titanic-eda-simple-model-0-80622_mviola/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.2.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="제목" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-12-01T01:06:14.981Z" title="2020-12-01T01:06:14.981Z">2020-12-01</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-12-01T01:10:02.464Z" title="2020-12-01T01:10:02.464Z">2020-12-01</time></span><span class="level-item"><a class="link-muted" href="/categories/study/">study</a></span><span class="level-item">43 minutes read (About 6497 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">캐글 Titanic EDA + Simple Model [0.80622] 분석</h1><div class="content"><h1 id="Titanic-EDA-Simple-Model-0-80622"><a href="#Titanic-EDA-Simple-Model-0-80622" class="headerlink" title="Titanic EDA + Simple Model [0.80622]"></a>Titanic EDA + Simple Model [0.80622]</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><a target="_blank" rel="noopener" href="https://www.kaggle.com/mviola/titanic-eda-simple-model-0-80622">https://www.kaggle.com/mviola/titanic-eda-simple-model-0-80622</a><br>이 노트북은 Titanic : Machine Learning from Disaster 대회에 대한 저의 첫 번째 접근 방식을 다룹니다 ( 자세한 내용은 <a target="_blank" rel="noopener" href="https://www.kaggle.com/c/titanic">여기</a> 에서 확인 ).<br>초심자로서 제 목표는 기본 기능 엔지니어링과 간단한 모델로 80 % 이상의 점수를 얻는 것이었고 결국 큰 만족과 노력으로 그것을 만들었습니다.<br>지나치게 복잡하지 않고 똑같이하고 싶은 분들을 위해이 과정을 안내하고 어떤 식 으로든 도움을 드리고자합니다.<br>시작하자!  </p>
+<h2 id="Importing-packages-and-data"><a href="#Importing-packages-and-data" class="headerlink" title="Importing packages and data"></a>Importing packages and data</h2><p>표준 모듈을로드하고 데이터를 살펴 보는 것으로 시작합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">pd.plotting.register_matplotlib_converters()</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">sns.set_style(<span class="string">&#x27;dark&#x27;</span>)</span><br><span class="line"><span class="keyword">from</span> sklearn.impute <span class="keyword">import</span> SimpleImputer</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> OneHotEncoder</span><br><span class="line"><span class="keyword">from</span> sklearn.compose <span class="keyword">import</span> ColumnTransformer</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line">print(<span class="string">&#x27;Setup complete&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Setup complete</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install kaggle</span><br></pre></td></tr></table></figure>
+
+<pre><code>Requirement already satisfied: kaggle in /usr/local/lib/python3.6/dist-packages (1.5.9)
+Requirement already satisfied: six&gt;=1.10 in /usr/local/lib/python3.6/dist-packages (from kaggle) (1.15.0)
+Requirement already satisfied: slugify in /usr/local/lib/python3.6/dist-packages (from kaggle) (0.0.1)
+Requirement already satisfied: python-dateutil in /usr/local/lib/python3.6/dist-packages (from kaggle) (2.8.1)
+Requirement already satisfied: python-slugify in /usr/local/lib/python3.6/dist-packages (from kaggle) (4.0.1)
+Requirement already satisfied: tqdm in /usr/local/lib/python3.6/dist-packages (from kaggle) (4.41.1)
+Requirement already satisfied: requests in /usr/local/lib/python3.6/dist-packages (from kaggle) (2.23.0)
+Requirement already satisfied: certifi in /usr/local/lib/python3.6/dist-packages (from kaggle) (2020.11.8)
+Requirement already satisfied: urllib3 in /usr/local/lib/python3.6/dist-packages (from kaggle) (1.24.3)
+Requirement already satisfied: text-unidecode&gt;=1.3 in /usr/local/lib/python3.6/dist-packages (from python-slugify-&gt;kaggle) (1.3)
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.6/dist-packages (from requests-&gt;kaggle) (3.0.4)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.6/dist-packages (from requests-&gt;kaggle) (2.10)</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> google.colab <span class="keyword">import</span> files</span><br><span class="line">uploaded = files.upload()</span><br><span class="line"><span class="keyword">for</span> fn <span class="keyword">in</span> uploaded.keys():</span><br><span class="line">  print(<span class="string">&#x27;uploaded file &quot;&#123;name&#125;&quot; with length &#123;length&#125; bytes&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">      name=fn, length=<span class="built_in">len</span>(uploaded[fn])))</span><br><span class="line">  </span><br><span class="line"><span class="comment"># kaggle.json을 아래 폴더로 옮긴 뒤, file을 사용할 수 있도록 권한을 부여한다. </span></span><br><span class="line">!mkdir -p ~/.kaggle/ &amp;&amp; mv kaggle.json ~/.kaggle/ &amp;&amp; chmod <span class="number">600</span> ~/.kaggle/kaggle.json</span><br></pre></td></tr></table></figure>
+
+
+
+<p><input type="file" id="files-b92572c2-d7dd-44f7-bcbc-baf683840bd7" name="files[]" multiple disabled
+   style="border:none" /><br><output id="result-b92572c2-d7dd-44f7-bcbc-baf683840bd7"><br> Upload widget is only available when the cell has been executed in the<br> current browser session. Please rerun this cell to enable.<br> </output><br> <script src="/nbextensions/google.colab/files.js"></script> </p>
+<pre><code>Saving kaggle.json to kaggle.json
+uploaded file &quot;kaggle.json&quot; with length 63 bytes</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls <span class="number">-1</span>ha ~/.kaggle/kaggle.json</span><br></pre></td></tr></table></figure>
+
+<pre><code>/root/.kaggle/kaggle.json</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> google.colab <span class="keyword">import</span> drive <span class="comment"># 패키지 불러오기 </span></span><br><span class="line"><span class="keyword">from</span> os.path <span class="keyword">import</span> join  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 구글 드라이브 마운트</span></span><br><span class="line">ROOT = <span class="string">&quot;/content/drive&quot;</span>     <span class="comment"># 드라이브 기본 경로</span></span><br><span class="line">print(ROOT)                 <span class="comment"># print content of ROOT (Optional)</span></span><br><span class="line">drive.mount(ROOT)           <span class="comment"># 드라이브 기본 경로 </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 프로젝트 파일 생성 및 다운받을 경로 이동</span></span><br><span class="line">MY_GOOGLE_DRIVE_PATH = <span class="string">&#x27;My Drive/Colab Notebooks/python_basic/kaggle_titanic-eda-simple-model-0-80622_mviola/data&#x27;</span></span><br><span class="line">PROJECT_PATH = join(ROOT, MY_GOOGLE_DRIVE_PATH)</span><br><span class="line">print(PROJECT_PATH)</span><br></pre></td></tr></table></figure>
+
+<pre><code>/content/drive
+Mounted at /content/drive
+/content/drive/My Drive/Colab Notebooks/python_basic/kaggle_titanic-eda-simple-model-0-80622_mviola/data</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%cd <span class="string">&quot;&#123;PROJECT_PATH&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>/content/drive/My Drive/Colab Notebooks/python_basic/kaggle_titanic-eda-simple-model-0-80622_mviola/data</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!kaggle competitions <span class="built_in">list</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>Warning: Looks like you&#39;re using an outdated API Version, please consider updating (server 1.5.9 / client 1.5.4)
+ref                                            deadline             category            reward  teamCount  userHasEntered  
+---------------------------------------------  -------------------  ---------------  ---------  ---------  --------------  
+contradictory-my-dear-watson                   2030-07-01 23:59:00  Getting Started     Prizes         82           False  
+gan-getting-started                            2030-07-01 23:59:00  Getting Started     Prizes        177           False  
+tpu-getting-started                            2030-06-03 23:59:00  Getting Started  Knowledge        269           False  
+digit-recognizer                               2030-01-01 00:00:00  Getting Started  Knowledge       2401           False  
+titanic                                        2030-01-01 00:00:00  Getting Started  Knowledge      18309            True  
+house-prices-advanced-regression-techniques    2030-01-01 00:00:00  Getting Started  Knowledge       4648            True  
+connectx                                       2030-01-01 00:00:00  Getting Started  Knowledge        425           False  
+nlp-getting-started                            2030-01-01 00:00:00  Getting Started  Knowledge       1270           False  
+competitive-data-science-predict-future-sales  2022-12-31 23:59:00  Playground           Kudos       9679           False  
+jane-street-market-prediction                  2021-02-22 23:59:00  Featured          $100,000        519           False  
+cassava-leaf-disease-classification            2021-02-18 23:59:00  Research           $18,000        726            True  
+rfcx-species-audio-detection                   2021-02-17 23:59:00  Research           $15,000        239           False  
+rock-paper-scissors                            2021-02-01 23:59:00  Playground          Prizes        932           False  
+hubmap-kidney-segmentation                     2021-02-01 23:59:00  Research           $60,000        155           False  
+riiid-test-answer-prediction                   2021-01-07 23:59:00  Featured          $100,000       2149           False  
+kaggle-survey-2020                             2021-01-06 23:59:00  Analytics          $30,000          0           False  
+nfl-big-data-bowl-2021                         2021-01-05 23:59:00  Analytics         $100,000          0           False  
+nfl-impact-detection                           2021-01-04 23:59:00  Featured           $75,000         56           False  
+halite-iv-playground-edition                   2020-12-31 23:59:00  Playground       Knowledge         53           False  
+predict-volcanic-eruptions-ingv-oe             2020-12-28 23:59:00  Playground            Swag        345           False  </code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!kaggle competitions download -c titanic</span><br></pre></td></tr></table></figure>
+
+<pre><code>Warning: Looks like you&#39;re using an outdated API Version, please consider updating (server 1.5.9 / client 1.5.4)
+Downloading train.csv to /content/drive/My Drive/Colab Notebooks/python_basic/kaggle_titanic-eda-simple-model-0-80622_mviola/data
+  0% 0.00/59.8k [00:00&lt;?, ?B/s]
+100% 59.8k/59.8k [00:00&lt;00:00, 7.92MB/s]
+Downloading test.csv to /content/drive/My Drive/Colab Notebooks/python_basic/kaggle_titanic-eda-simple-model-0-80622_mviola/data
+  0% 0.00/28.0k [00:00&lt;?, ?B/s]
+100% 28.0k/28.0k [00:00&lt;00:00, 3.90MB/s]
+Downloading gender_submission.csv to /content/drive/My Drive/Colab Notebooks/python_basic/kaggle_titanic-eda-simple-model-0-80622_mviola/data
+  0% 0.00/3.18k [00:00&lt;?, ?B/s]
+100% 3.18k/3.18k [00:00&lt;00:00, 451kB/s]</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!ls</span><br></pre></td></tr></table></figure>
+
+<pre><code>gender_submission.csv  test.csv  train.csv</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Load and display train data</span></span><br><span class="line">train_data = pd.read_csv(<span class="string">&#x27;train.csv&#x27;</span>)</span><br><span class="line">train_data.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17599</td>
+      <td>71.2833</td>
+      <td>C85</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O2. 3101282</td>
+      <td>7.9250</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113803</td>
+      <td>53.1000</td>
+      <td>C123</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Allen, Mr. William Henry</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>그런 다음 훈련 및 테스트 데이터 모두에서 결 측값을 확인합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_data.info()</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 891 entries, 0 to 890
+Data columns (total 12 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   PassengerId  891 non-null    int64  
+ 1   Survived     891 non-null    int64  
+ 2   Pclass       891 non-null    int64  
+ 3   Name         891 non-null    object 
+ 4   Sex          891 non-null    object 
+ 5   Age          714 non-null    float64
+ 6   SibSp        891 non-null    int64  
+ 7   Parch        891 non-null    int64  
+ 8   Ticket       891 non-null    object 
+ 9   Fare         891 non-null    float64
+ 10  Cabin        204 non-null    object 
+ 11  Embarked     889 non-null    object 
+dtypes: float64(2), int64(5), object(5)
+memory usage: 83.7+ KB</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Load and display test data</span></span><br><span class="line">test_data = pd.read_csv(<span class="string">&#x27;test.csv&#x27;</span>)</span><br><span class="line">test_data.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>892</td>
+      <td>3</td>
+      <td>Kelly, Mr. James</td>
+      <td>male</td>
+      <td>34.5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>330911</td>
+      <td>7.8292</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>893</td>
+      <td>3</td>
+      <td>Wilkes, Mrs. James (Ellen Needs)</td>
+      <td>female</td>
+      <td>47.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>363272</td>
+      <td>7.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>894</td>
+      <td>2</td>
+      <td>Myles, Mr. Thomas Francis</td>
+      <td>male</td>
+      <td>62.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>240276</td>
+      <td>9.6875</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>895</td>
+      <td>3</td>
+      <td>Wirz, Mr. Albert</td>
+      <td>male</td>
+      <td>27.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>315154</td>
+      <td>8.6625</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>896</td>
+      <td>3</td>
+      <td>Hirvonen, Mrs. Alexander (Helga E Lindqvist)</td>
+      <td>female</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3101298</td>
+      <td>12.2875</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test_data.info()</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 418 entries, 0 to 417
+Data columns (total 11 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   PassengerId  418 non-null    int64  
+ 1   Pclass       418 non-null    int64  
+ 2   Name         418 non-null    object 
+ 3   Sex          418 non-null    object 
+ 4   Age          332 non-null    float64
+ 5   SibSp        418 non-null    int64  
+ 6   Parch        418 non-null    int64  
+ 7   Ticket       418 non-null    object 
+ 8   Fare         417 non-null    float64
+ 9   Cabin        91 non-null     object 
+ 10  Embarked     418 non-null    object 
+dtypes: float64(2), int64(4), object(5)
+memory usage: 36.0+ KB</code></pre>
+<p>Age, Cabin및의 값 Embarked은 기차 데이터에서 누락되고 Age, Fare및의 값 Cabin은 테스트 데이터에서 누락되었습니다.<br>필요한 경우 나중에 처리합니다.<br>마지막으로, 우리가 무엇을 예측할 것인지에 대한 아이디어를 얻기 위해 목표에 집중합니다. 얼마나 많은 승객이 살아남 았는지 봅시다.  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_data[<span class="string">&#x27;Survived&#x27;</span>].value_counts(normalize=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0    0.616162
+1    0.383838
+Name: Survived, dtype: float64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g = sns.countplot(y=train_data[<span class="string">&#x27;Survived&#x27;</span>]).set_title(<span class="string">&#x27;Survivors and deads count&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_21_0.png" alt="png"></p>
+<p>훈련 데이터에서 승객의 약 38.4 %만이 재난에서 살아 남았습니다. 이것은 우리가 염두에 두어야 할 중요한 가치입니다.</p>
+<h2 id="Feature-analysis-and-creation"><a href="#Feature-analysis-and-creation" class="headerlink" title="Feature analysis and creation"></a>Feature analysis and creation</h2><p>이 섹션의 목표는 모델링 부분에서보다 정확한 기능 선택을 수행하기 위해 데이터에 대한 일반적인 이해를 얻는 것입니다.<br>따라서 승객의 생존 여부를 예측하는 데있어 그 중요성을 결정하기 위해 한 번에 하나의 기능을 탐색 할 것입니다.</p>
+<h3 id="Sex"><a href="#Sex" class="headerlink" title="Sex"></a>Sex</h3><p>승객의 약 65 %는 남성이고 나머지 35 %는 여성이었습니다.<br>여기서 주목해야 할 중요한 점은 여성의 생존율이 남성의 생존율의 4 배라는 점이며 이것이 Sex가장 유익한 특징 중 하나입니다.<br>성별 제출 자체 점수가 0.76555 인 것은 아닙니다!  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fig, axarr = plt.subplots(<span class="number">1</span>, <span class="number">2</span>, figsize=(<span class="number">12</span>,<span class="number">6</span>))</span><br><span class="line">a = sns.countplot(train_data[<span class="string">&#x27;Sex&#x27;</span>], ax=axarr[<span class="number">0</span>]).set_title(<span class="string">&#x27;Passengers count by sex&#x27;</span>)</span><br><span class="line">axarr[<span class="number">1</span>].set_title(<span class="string">&#x27;Survival rate by sex&#x27;</span>)</span><br><span class="line">b = sns.barplot(x=<span class="string">&#x27;Sex&#x27;</span>, y=<span class="string">&#x27;Survived&#x27;</span>, data=train_data, ax=axarr[<span class="number">1</span>]).set_ylabel(<span class="string">&#x27;Survival rate&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>/usr/local/lib/python3.6/dist-packages/seaborn/_decorators.py:43: FutureWarning: Pass the following variable as a keyword arg: x. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
+  FutureWarning</code></pre>
+<p><img src="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_27_1.png" alt="png"></p>
+<h3 id="Pclass"><a href="#Pclass" class="headerlink" title="Pclass"></a>Pclass</h3><p>배에는 세 개의 클래스가 있었고 플롯에서 우리는 세 번째 클래스의 승객 수가 1 등석과 2 등석의 승객 수를 합친 것보다 더 많음을 알 수 있습니다.<br>그러나 등급별 생존율은 동일하지 않습니다. 1 등석 승객의 60 % 이상과 2 등석 승객의 약 절반이 구조 된 반면 3 등석 승객의 75 %는 재난에서 살아남지 못했습니다.<br>이러한 이유로 이것은 확실히 고려해야 할 중요한 측면입니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_data.groupby(<span class="string">&#x27;Pclass&#x27;</span>).Survived.mean()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Pclass
+1    0.629630
+2    0.472826
+3    0.242363
+Name: Survived, dtype: float64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fig, axarr = plt.subplots(<span class="number">1</span>,<span class="number">2</span>,figsize=(<span class="number">12</span>,<span class="number">6</span>))</span><br><span class="line">a = sns.countplot(x=<span class="string">&#x27;Pclass&#x27;</span>, hue=<span class="string">&#x27;Survived&#x27;</span>, data=train_data, ax=axarr[<span class="number">0</span>]).set_title(<span class="string">&#x27;Survivors and deads count by class&#x27;</span>)</span><br><span class="line">axarr[<span class="number">1</span>].set_title(<span class="string">&#x27;Survival rate by class&#x27;</span>)</span><br><span class="line">b = sns.barplot(x=<span class="string">&#x27;Pclass&#x27;</span>, y=<span class="string">&#x27;Survived&#x27;</span>, data=train_data, ax=axarr[<span class="number">1</span>]).set_ylabel(<span class="string">&#x27;Survival rate&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_31_0.png" alt="png"></p>
+<p>우리는 또한 생존에 의해 속도를 볼 수 Sex와 Pclass매우 인상적이다 : 비율이 세 번째 수준의 여성이 50 %로 떨어진다 동안 구출 첫 번째 클래스 및 두 번째 클래스 여성은 각각 97 %와 92 %였다.<br>그럼에도 불구하고 이것은 일류 남성의 37 % 생존율보다 여전히 높습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_data.groupby([<span class="string">&#x27;Pclass&#x27;</span>, <span class="string">&#x27;Sex&#x27;</span>]).Survived.mean()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Pclass  Sex   
+1       female    0.968085
+        male      0.368852
+2       female    0.921053
+        male      0.157407
+3       female    0.500000
+        male      0.135447
+Name: Survived, dtype: float64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.title(<span class="string">&#x27;Survival rate by sex and class&#x27;</span>)</span><br><span class="line">g = sns.barplot(x=<span class="string">&#x27;Pclass&#x27;</span>, y=<span class="string">&#x27;Survived&#x27;</span>, hue=<span class="string">&#x27;Sex&#x27;</span>, data=train_data).set_ylabel(<span class="string">&#x27;Survival rate&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_34_0.png" alt="png"></p>
+<h3 id="Age"><a href="#Age" class="headerlink" title="Age"></a>Age</h3><p>이 열에는 많은 결 측값이 포함되어 있지만 훈련 데이터에서 평균 연령이 30 세 미만임을 알 수 있습니다.<br>다음은 일반적으로 생존자와 사망자에 대한 연령 분포의 플롯입니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fig, axarr = plt.subplots(<span class="number">1</span>,<span class="number">2</span>,figsize=(<span class="number">12</span>,<span class="number">6</span>))</span><br><span class="line">axarr[<span class="number">0</span>].set_title(<span class="string">&#x27;Age distribution&#x27;</span>)</span><br><span class="line">f = sns.distplot(train_data[<span class="string">&#x27;Age&#x27;</span>], color=<span class="string">&#x27;g&#x27;</span>, bins=<span class="number">40</span>, ax=axarr[<span class="number">0</span>])</span><br><span class="line">axarr[<span class="number">1</span>].set_title(<span class="string">&#x27;Age distribution for the two subpopulations&#x27;</span>)</span><br><span class="line">g = sns.kdeplot(train_data[<span class="string">&#x27;Age&#x27;</span>].loc[train_data[<span class="string">&#x27;Survived&#x27;</span>] == <span class="number">1</span>], </span><br><span class="line">                shade= <span class="literal">True</span>, ax=axarr[<span class="number">1</span>], label=<span class="string">&#x27;Survived&#x27;</span>).set_xlabel(<span class="string">&#x27;Age&#x27;</span>)</span><br><span class="line">g = sns.kdeplot(train_data[<span class="string">&#x27;Age&#x27;</span>].loc[train_data[<span class="string">&#x27;Survived&#x27;</span>] == <span class="number">0</span>], </span><br><span class="line">                shade=<span class="literal">True</span>, ax=axarr[<span class="number">1</span>], label=<span class="string">&#x27;Not Survived&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>/usr/local/lib/python3.6/dist-packages/seaborn/distributions.py:2551: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)</code></pre>
+<p><img src="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_37_1.png" alt="png"></p>
+<p>첫 번째 모습에서, 사이의 관계 Age와 Survived이 나타납니다 매우 명확하지 : 우리는 살아 사람들을 위해 젊은 승객에 해당하는 피크가 있다는 것을 확실히 알 수 있지만, 그 외에도 나머지는 매우 유익하지 않습니다.<br>우리도 고려해 보면이 기능을 더 잘 이해할 수 Sex있습니다. 이제 많은 수의 남성 생존자가 12 년 미만을 보냈고 여성 그룹에는 특별한 속성이 없다는 것이 더 분명해졌습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">8</span>,<span class="number">5</span>))</span><br><span class="line">g = sns.swarmplot(y=<span class="string">&#x27;Sex&#x27;</span>, x=<span class="string">&#x27;Age&#x27;</span>, hue=<span class="string">&#x27;Survived&#x27;</span>, data=train_data).set_title(<span class="string">&#x27;Survived by age and sex&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_39_0.png" alt="png"></p>
+<p>살펴볼 또 다른 흥미로운 점은 Age, Pclass및 간의 관계 Survived입니다.<br>우리는 Pclass매우 명확한 수평 패턴이 없기 때문에 그 영향이 중요하다고 생각합니다.<br>또한 1 등석에는 아이들이 많지 않다는 것을 알 수 있습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">8</span>,<span class="number">5</span>))</span><br><span class="line">h = sns.swarmplot(x=<span class="string">&#x27;Pclass&#x27;</span>, y=<span class="string">&#x27;Age&#x27;</span>, hue=<span class="string">&#x27;Survived&#x27;</span>, data=train_data).set_title(<span class="string">&#x27;Survived by age and class&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_41_0.png" alt="png"></p>
+<p>이 모든 플롯 후에 나는 Age모델에서 의 중요성에 대해 확신하지 못합니다 . 나는 그것을 사용하지 않을 생각이지만 나중에 보게 될 것이라고 생각합니다.</p>
+<h3 id="Fare"><a href="#Fare" class="headerlink" title="Fare"></a>Fare</h3><p>설명에서 Fare분포가 양으로 치우친 것을 볼 수 있습니다. 데이터의 75 %는 31 미만이고 최대는 512입니다.<br>이 기능을 더 잘 이해하기 위해 여기서 가장 간단한 아이디어는 사 분위수를 사용하여 요금 범위를 만드는 것입니다.<br>처음 보면 운임이 높을수록 생존 가능성이 높아진다는 것을 알 수 있습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_data.Fare.describe()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>count    891.000000
+mean      32.204208
+std       49.693429
+min        0.000000
+25%        7.910400
+50%       14.454200
+75%       31.000000
+max      512.329200
+Name: Fare, dtype: float64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fig, axarr = plt.subplots(<span class="number">1</span>,<span class="number">2</span>,figsize=(<span class="number">12</span>,<span class="number">6</span>))</span><br><span class="line">f = sns.distplot(train_data.Fare, color=<span class="string">&#x27;g&#x27;</span>, ax=axarr[<span class="number">0</span>]).set_title(<span class="string">&#x27;Fare distribution&#x27;</span>)</span><br><span class="line">fare_ranges = pd.qcut(train_data.Fare, <span class="number">4</span>, labels = [<span class="string">&#x27;Low&#x27;</span>, <span class="string">&#x27;Mid&#x27;</span>, <span class="string">&#x27;High&#x27;</span>, <span class="string">&#x27;Very high&#x27;</span>])</span><br><span class="line">axarr[<span class="number">1</span>].set_title(<span class="string">&#x27;Survival rate by fare category&#x27;</span>)</span><br><span class="line">g = sns.barplot(x=fare_ranges, y=train_data.Survived, ax=axarr[<span class="number">1</span>]).set_ylabel(<span class="string">&#x27;Survival rate&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>/usr/local/lib/python3.6/dist-packages/seaborn/distributions.py:2551: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)</code></pre>
+<p><img src="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_46_1.png" alt="png"></p>
+<p>그러나 모델링에 관해서는 이러한 운임 범주가 상당히 부족하여 전혀 도움이되지 않았습니다.<br>아래의 더 자세한 플롯을 살펴보면 예를 들어 요금이 200에서 300 사이 인 모든 남성이 사망 한 것을 볼 수 있습니다.<br>이런 이유로 Fare너무 많은 정보를 잃지 않도록 기능을 그대로 두었습니다 . 트리의 더 깊은 수준에서 더 차별적 인 관계가 열리고 좋은 그룹 탐지기가 될 수 있습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">8</span>,<span class="number">5</span>))</span><br><span class="line"><span class="comment"># 이 플롯에서 운임이 500 초과인 이상 값 3개를 제외했습니다.</span></span><br><span class="line">a = sns.swarmplot(x=<span class="string">&#x27;Sex&#x27;</span>, y=<span class="string">&#x27;Fare&#x27;</span>, hue=<span class="string">&#x27;Survived&#x27;</span>, data=train_data.loc[train_data.Fare&lt;<span class="number">500</span>]).set_title(<span class="string">&#x27;Survived by fare and sex&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>/usr/local/lib/python3.6/dist-packages/seaborn/categorical.py:1296: UserWarning: 53.4% of the points cannot be placed; you may want to decrease the size of the markers or use stripplot.
+  warnings.warn(msg, UserWarning)
+/usr/local/lib/python3.6/dist-packages/seaborn/categorical.py:1296: UserWarning: 21.1% of the points cannot be placed; you may want to decrease the size of the markers or use stripplot.
+  warnings.warn(msg, UserWarning)</code></pre>
+<p><img src="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_48_1.png" alt="png"></p>
+<p><a target="_blank" rel="noopener" href="https://www.kaggle.com/erikbruin/titanic-2nd-degree-families-and-majority-voting">여기</a> 에서 Erik의 커널을 본 후이 기능을 충분히 분석하지 않았 음을 상기 시켰습니다.<br>설명을 인쇄 할 때의 최소값 Fare이 0이고 조금 이상하다는 사실도 알아 차렸어야합니다 .<br>이 정보가 정확합니까? 이 승객이 누구인지 봅시다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_data.loc[train_data.Fare==<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>179</th>
+      <td>180</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Leonard, Mr. Lionel</td>
+      <td>male</td>
+      <td>36.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>LINE</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>263</th>
+      <td>264</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Harrison, Mr. William</td>
+      <td>male</td>
+      <td>40.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>112059</td>
+      <td>0.0</td>
+      <td>B94</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>271</th>
+      <td>272</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Tornquist, Mr. William Henry</td>
+      <td>male</td>
+      <td>25.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>LINE</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>277</th>
+      <td>278</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Parkes, Mr. Francis "Frank"</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>239853</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>302</th>
+      <td>303</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Johnson, Mr. William Cahoone Jr</td>
+      <td>male</td>
+      <td>19.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>LINE</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>413</th>
+      <td>414</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Cunningham, Mr. Alfred Fleming</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>239853</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>466</th>
+      <td>467</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Campbell, Mr. William</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>239853</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>481</th>
+      <td>482</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Frost, Mr. Anthony Wood "Archie"</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>239854</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>597</th>
+      <td>598</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Johnson, Mr. Alfred</td>
+      <td>male</td>
+      <td>49.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>LINE</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>633</th>
+      <td>634</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Parr, Mr. William Henry Marsh</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>112052</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>674</th>
+      <td>675</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Watson, Mr. Ennis Hastings</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>239856</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>732</th>
+      <td>733</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Knight, Mr. Robert J</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>239855</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>806</th>
+      <td>807</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Andrews, Mr. Thomas Jr</td>
+      <td>male</td>
+      <td>39.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>112050</td>
+      <td>0.0</td>
+      <td>A36</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>815</th>
+      <td>816</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Fry, Mr. Richard</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>112058</td>
+      <td>0.0</td>
+      <td>B102</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>822</th>
+      <td>823</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Reuchlin, Jonkheer. John George</td>
+      <td>male</td>
+      <td>38.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>19972</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>그들 중 일부는 1 등석 또는 2 등석 승객이기 때문에 내 모델을 혼동시킬 수있는 제로 요금을 제거하기로 결정했습니다.<br>이 함수의 도움으로에 대해 0 값을 만날 때마다 null 값을 설정합니다 Fare.<br>그것들은 나중에 모델을 훈련 할 때 전가 될 것입니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">remove_zero_fares</span>(<span class="params">row</span>):</span></span><br><span class="line">    <span class="keyword">if</span> row.Fare == <span class="number">0</span>:</span><br><span class="line">        row.Fare = np.NaN</span><br><span class="line">    <span class="keyword">return</span> row</span><br><span class="line"><span class="comment"># Apply the function</span></span><br><span class="line">train_data = train_data.apply(remove_zero_fares, axis=<span class="number">1</span>)</span><br><span class="line">test_data = test_data.apply(remove_zero_fares, axis=<span class="number">1</span>)</span><br><span class="line"><span class="comment"># Check if it did the job</span></span><br><span class="line">print(<span class="string">&#x27;Number of zero-Fares: &#123;:d&#125;&#x27;</span>.<span class="built_in">format</span>(train_data.loc[train_data.Fare==<span class="number">0</span>].shape[<span class="number">0</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>Number of zero-Fares: 0</code></pre>
+<h3 id="Embarked"><a href="#Embarked" class="headerlink" title="Embarked"></a>Embarked</h3><p>Embarked승객이 어디에서 탑승했는지 알려줍니다.<br>세 가지 가능한 값이 있습니다 : Southampton, Cherbourg 및 Queenstown.<br>교육 데이터에서 70 % 이상의 사람들이 Southampton에서 탑승했으며 Cherbourg에서 20 % 미만, 나머지는 Queenstown에서 탑승했습니다.<br>탑승 지점으로 생존자를 세어 보면 Cherbourg에서 출발 한 사람들이 사망 한 사람들보다 더 많은 사람들이 살아 남았다는 것을 알 수 있습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fig, axarr = plt.subplots(<span class="number">1</span>,<span class="number">2</span>,figsize=(<span class="number">12</span>,<span class="number">6</span>))</span><br><span class="line">sns.countplot(train_data[<span class="string">&#x27;Embarked&#x27;</span>], ax=axarr[<span class="number">0</span>]).set_title(<span class="string">&#x27;Passengers count by boarding point&#x27;</span>)</span><br><span class="line">p = sns.countplot(x = <span class="string">&#x27;Embarked&#x27;</span>, hue = <span class="string">&#x27;Survived&#x27;</span>, data = train_data, </span><br><span class="line">                  ax=axarr[<span class="number">1</span>]).set_title(<span class="string">&#x27;Survivors and deads count by boarding point&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>/usr/local/lib/python3.6/dist-packages/seaborn/_decorators.py:43: FutureWarning: Pass the following variable as a keyword arg: x. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
+  FutureWarning</code></pre>
+<p><img src="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_55_1.png" alt="png"></p>
+<p>승객의 탑승 지점이 생존 기회를 바꿀 수있을 것이라고 예상하지 않기 때문에 아마도 퀸스 타운과 사우 샘프 턴이 아닌 Cherbourg에서 온 승객의 1 등석 및 2 등석 승객 비율이 더 높기 때문일 것입니다.<br>이를 확인하기 위해 다른 착수 지점에 대한 클래스 분포를 확인합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g = sns.countplot(data=train_data, x=<span class="string">&#x27;Embarked&#x27;</span>, hue=<span class="string">&#x27;Pclass&#x27;</span>).set_title(<span class="string">&#x27;Pclass count by embarking point&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_57_0.png" alt="png"></p>
+<p>그 주장은 정확하고 왜 그 생존율이 그렇게 높은지 정당화합니다.<br>이 기능은 트리의 더 깊은 수준에서 그룹을 감지하는 데 유용 할 수 있으며 이것이 제가 그것을 유지하는 유일한 이유입니다.</p>
+<h3 id="Name"><a href="#Name" class="headerlink" title="Name"></a>Name</h3><p>Name열은 우리가 성씨을 사용하여 가족 그룹을 식별 할 수 예를 들어 같은 유용한 정보가 포함되어 있습니다.<br>그러나이 노트북에서는 승객의 직함 만 추출하여 열차 및 테스트 데이터 모두에 대한 새로운 기능을 생성했습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_data[<span class="string">&#x27;Title&#x27;</span>] = train_data[<span class="string">&#x27;Name&#x27;</span>].apply(<span class="keyword">lambda</span> x: x.split(<span class="string">&#x27;,&#x27;</span>)[<span class="number">1</span>].split(<span class="string">&#x27;.&#x27;</span>)[<span class="number">0</span>].strip())</span><br><span class="line">test_data[<span class="string">&#x27;Title&#x27;</span>] = test_data[<span class="string">&#x27;Name&#x27;</span>].apply(<span class="keyword">lambda</span> x: x.split(<span class="string">&#x27;,&#x27;</span>)[<span class="number">1</span>].split(<span class="string">&#x27;.&#x27;</span>)[<span class="number">0</span>].strip())</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_data[<span class="string">&#x27;Title&#x27;</span>].value_counts()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Mr              517
+Miss            182
+Mrs             125
+Master           40
+Dr                7
+Rev               6
+Mlle              2
+Col               2
+Major             2
+Mme               1
+Lady              1
+Capt              1
+the Countess      1
+Don               1
+Jonkheer          1
+Ms                1
+Sir               1
+Name: Title, dtype: int64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test_data[<span class="string">&#x27;Title&#x27;</span>].value_counts()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Mr        240
+Miss       78
+Mrs        72
+Master     21
+Col         2
+Rev         2
+Dr          1
+Dona        1
+Ms          1
+Name: Title, dtype: int64</code></pre>
+<p>타이틀의 분포를 살펴보면 정말 저주파 타이틀을 더 큰 그룹으로 옮기는 것이 편리 할 수 ​​있습니다.<br>이를 분석 한 후 모든 희귀 여성 타이틀을 미스로, 모든 희귀 남성 타이틀을 Mr.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 희귀 여성 타이틀 대체</span></span><br><span class="line">train_data[<span class="string">&#x27;Title&#x27;</span>].replace([<span class="string">&#x27;Mme&#x27;</span>, <span class="string">&#x27;Ms&#x27;</span>, <span class="string">&#x27;Lady&#x27;</span>, <span class="string">&#x27;Mlle&#x27;</span>, <span class="string">&#x27;the Countess&#x27;</span>, <span class="string">&#x27;Dona&#x27;</span>], <span class="string">&#x27;Miss&#x27;</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">test_data[<span class="string">&#x27;Title&#x27;</span>].replace([<span class="string">&#x27;Mme&#x27;</span>, <span class="string">&#x27;Ms&#x27;</span>, <span class="string">&#x27;Lady&#x27;</span>, <span class="string">&#x27;Mlle&#x27;</span>, <span class="string">&#x27;the Countess&#x27;</span>, <span class="string">&#x27;Dona&#x27;</span>], <span class="string">&#x27;Miss&#x27;</span>, inplace=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># Substitute rare male titles</span></span><br><span class="line">train_data[<span class="string">&#x27;Title&#x27;</span>].replace([<span class="string">&#x27;Major&#x27;</span>, <span class="string">&#x27;Col&#x27;</span>, <span class="string">&#x27;Capt&#x27;</span>, <span class="string">&#x27;Don&#x27;</span>, <span class="string">&#x27;Sir&#x27;</span>, <span class="string">&#x27;Jonkheer&#x27;</span>], <span class="string">&#x27;Mr&#x27;</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">test_data[<span class="string">&#x27;Title&#x27;</span>].replace([<span class="string">&#x27;Major&#x27;</span>, <span class="string">&#x27;Col&#x27;</span>, <span class="string">&#x27;Capt&#x27;</span>, <span class="string">&#x27;Don&#x27;</span>, <span class="string">&#x27;Sir&#x27;</span>, <span class="string">&#x27;Jonkheer&#x27;</span>], <span class="string">&#x27;Mr&#x27;</span>, inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>다음은 최종 결과입니다. 대부분의 경우 생존율이 평균 생존율보다 상당히 높거나 낮은 것으로 나타나기 때문에이 새로운 기능에 대해 상대적으로 높은 기대를 가지고 있습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_data.groupby(<span class="string">&#x27;Title&#x27;</span>).Survived.mean()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Title
+Dr        0.428571
+Master    0.575000
+Miss      0.707447
+Mr        0.160000
+Mrs       0.792000
+Rev       0.000000
+Name: Survived, dtype: float64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.title(<span class="string">&#x27;Survival rate by Title&#x27;</span>)</span><br><span class="line">g = sns.barplot(x=<span class="string">&#x27;Title&#x27;</span>, y=<span class="string">&#x27;Survived&#x27;</span>, data=train_data).set_ylabel(<span class="string">&#x27;Survival rate&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_68_0.png" alt="png"></p>
+<h3 id="Cabin-and-Ticket"><a href="#Cabin-and-Ticket" class="headerlink" title="Cabin and Ticket"></a>Cabin and Ticket</h3><p>이 Cabin기능은 결 측값이 많기 때문에 다소 문제가 있습니다.<br>나는 그것이 우리 모델에 너무 많은 도움이 될 것이라고 기대하지 않으므로 그것을 분석조차하지 않습니다.<br>다른 한편으로 올바르게 설계된 Ticket컬럼은 가족 그룹을 찾는 가장 좋은 방법이지만이 노트북에 대해 선택한 접근 방식은 아닙니다 (다른 노트북에서 시도해 볼 것입니다).<br>잠재력을 완전히 알고 삭제하는 것이 아쉽기 때문에 두 개의 새로운 열을 만들기로 결정했습니다. 하나는 티켓 처음 두 글자이고 다른 하나는 티켓 길이입니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 처음 두 글자 추출</span></span><br><span class="line">train_data[<span class="string">&#x27;Ticket_lett&#x27;</span>] = train_data.Ticket.apply(<span class="keyword">lambda</span> x: x[:<span class="number">2</span>])</span><br><span class="line">test_data[<span class="string">&#x27;Ticket_lett&#x27;</span>] = test_data.Ticket.apply(<span class="keyword">lambda</span> x: x[:<span class="number">2</span>])</span><br><span class="line"><span class="comment"># 티켓 길이 계산</span></span><br><span class="line">train_data[<span class="string">&#x27;Ticket_len&#x27;</span>] = train_data.Ticket.apply(<span class="keyword">lambda</span> x: <span class="built_in">len</span>(x))</span><br><span class="line">test_data[<span class="string">&#x27;Ticket_len&#x27;</span>] = test_data.Ticket.apply(<span class="keyword">lambda</span> x: <span class="built_in">len</span>(x))</span><br></pre></td></tr></table></figure>
+
+<p>이것은 우리 모델에 약간 도움이 될 것이므로 여기에서 괜찮다고 생각합니다.</p>
+<h3 id="SibSp"><a href="#SibSp" class="headerlink" title="SibSp"></a>SibSp</h3><p>SibSp타이타닉 호에 탑승 한 사람의 형제 자매 또는 배우자의 수입니다.<br>90 % 이상의 사람들이 혼자 여행하거나 형제 자매 또는 배우자와 함께 여행 한 것으로 나타났습니다.<br>서로 다른 범주 간의 생존율은 다소 혼란 스럽지만 혼자 여행하거나 형제가 2 명 이상인 사람들의 생존 가능성이 낮다는 것을 알 수 있습니다.<br>또한, 5 ~ 8 명의 형제 자매가있는 대가족 중 누구도 살아남을 수 없었 음을 알 수 있습니다.  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fig, axarr = plt.subplots(<span class="number">1</span>,<span class="number">2</span>,figsize=(<span class="number">12</span>,<span class="number">6</span>))</span><br><span class="line">a = sns.countplot(train_data[<span class="string">&#x27;SibSp&#x27;</span>], ax=axarr[<span class="number">0</span>]).set_title(<span class="string">&#x27;Passengers count by SibSp&#x27;</span>)</span><br><span class="line">axarr[<span class="number">1</span>].set_title(<span class="string">&#x27;Survival rate by SibSp&#x27;</span>)</span><br><span class="line">b = sns.barplot(x=<span class="string">&#x27;SibSp&#x27;</span>, y=<span class="string">&#x27;Survived&#x27;</span>, data=train_data, ax=axarr[<span class="number">1</span>]).set_ylabel(<span class="string">&#x27;Survival rate&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>/usr/local/lib/python3.6/dist-packages/seaborn/_decorators.py:43: FutureWarning: Pass the following variable as a keyword arg: x. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
+  FutureWarning</code></pre>
+<p><img src="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_75_1.png" alt="png"></p>
+<h3 id="Parch"><a href="#Parch" class="headerlink" title="Parch"></a>Parch</h3><p>받는 유사 SibSp열이 기능은 부모 또는 각 승객이 함께 여행 한 아이의 수를 포함합니다.<br>여기에서 우리는 같은 결론을 내립니다. SibSp작은 가족이 더 큰 가족과 혼자 여행하는 승객보다 생존 할 기회가 더 많다는 것을 다시 한 번 볼 수 있습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fig, axarr = plt.subplots(<span class="number">1</span>,<span class="number">2</span>,figsize=(<span class="number">12</span>,<span class="number">6</span>))</span><br><span class="line">a = sns.countplot(train_data[<span class="string">&#x27;Parch&#x27;</span>], ax=axarr[<span class="number">0</span>]).set_title(<span class="string">&#x27;Passengers count by Parch&#x27;</span>)</span><br><span class="line">axarr[<span class="number">1</span>].set_title(<span class="string">&#x27;Survival rate by Parch&#x27;</span>)</span><br><span class="line">b = sns.barplot(x=<span class="string">&#x27;Parch&#x27;</span>, y=<span class="string">&#x27;Survived&#x27;</span>, data=train_data, ax=axarr[<span class="number">1</span>]).set_ylabel(<span class="string">&#x27;Survival rate&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>/usr/local/lib/python3.6/dist-packages/seaborn/_decorators.py:43: FutureWarning: Pass the following variable as a keyword arg: x. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
+  FutureWarning</code></pre>
+<p><img src="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_78_1.png" alt="png"></p>
+<h3 id="Family-type"><a href="#Family-type" class="headerlink" title="Family type"></a>Family type</h3><p>약해 보이는 두 개의 예측 변수가 있기 때문에 우리가 할 수있는 한 가지는 이들을 결합하여 더 강한 예측 변수를 얻는 것입니다. 및<br>의 경우 두 변수를 결합하여 , 및 1 (누가 승객 자신) 의 합인 가족 크기 특성을 얻을 수 있습니다.SibSpParchSibSpParch</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 새로운 Fam_size 컬럼 생성</span></span><br><span class="line">train_data[<span class="string">&#x27;Fam_size&#x27;</span>] = train_data[<span class="string">&#x27;SibSp&#x27;</span>] + train_data[<span class="string">&#x27;Parch&#x27;</span>] + <span class="number">1</span></span><br><span class="line">test_data[<span class="string">&#x27;Fam_size&#x27;</span>] = test_data[<span class="string">&#x27;SibSp&#x27;</span>] + test_data[<span class="string">&#x27;Parch&#x27;</span>] + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>가족 규모별로 생존율을 도표화하면 혼자있는 사람들이 최대 4 개 구성 요소의 가족보다 생존 확률이 낮았고, 대가족의 경우 생존율이 떨어지고 궁극적으로 매우 큰 가족의 경우 0이되는 것이 분명합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.title(<span class="string">&#x27;Survival rate by family size&#x27;</span>)</span><br><span class="line">g = sns.barplot(x=<span class="string">&#x27;Fam_size&#x27;</span>, y=<span class="string">&#x27;Survived&#x27;</span>, data=train_data).set_ylabel(<span class="string">&#x27;Survival rate&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_83_0.png" alt="png"></p>
+<p>이전 트렌드를 더 요약하기 위해 마지막 기능으로 가족 규모에 대해 4 개의 그룹을 만들었습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 4 개 그룹 생성</span></span><br><span class="line">train_data[<span class="string">&#x27;Fam_type&#x27;</span>] = pd.cut(train_data.Fam_size, [<span class="number">0</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">11</span>], labels=[<span class="string">&#x27;Solo&#x27;</span>, <span class="string">&#x27;Small&#x27;</span>, <span class="string">&#x27;Big&#x27;</span>, <span class="string">&#x27;Very big&#x27;</span>])</span><br><span class="line">test_data[<span class="string">&#x27;Fam_type&#x27;</span>] = pd.cut(test_data.Fam_size, [<span class="number">0</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">11</span>], labels=[<span class="string">&#x27;Solo&#x27;</span>, <span class="string">&#x27;Small&#x27;</span>, <span class="string">&#x27;Big&#x27;</span>, <span class="string">&#x27;Very big&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>최종 결과는 다음과 같습니다. 좋은 패턴을 발견 한 것 같습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.title(<span class="string">&#x27;Survival rate by family type&#x27;</span>)</span><br><span class="line">g = sns.barplot(x=train_data.Fam_type, y=train_data.Survived).set_ylabel(<span class="string">&#x27;Survival rate&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/kaggle_titanic-eda-simple-model-0-80622_mviola/output_87_0.png" alt="png"></p>
+<p>이러한 모든 고려 사항이 끝나면 마침내 모든 것을 간단하고 매우 효율적인 모델에 통합 할 때입니다.</p>
+<h2 id="Modeling"><a href="#Modeling" class="headerlink" title="Modeling"></a>Modeling</h2><p>사용할 기능을 선택하고 대상을 격리하는 것으로 시작합니다.<br>말씀 드렸듯이 저는 고려하지 않을 것이며 Cabin, Age청년 인 관련 정보가 마스터 제목에 암호화되어 있으므로 결국 제외 했습니다.<br>나는 또한 칼럼을 Sex고려할 때 유용 하지 않기 때문에 사용하지 않았습니다 Title. 성인 남성과 어린 아이들은 같은 성별을 가지고 있지만 이전에 본 것과 정말 다른 범주이므로 알고리즘을 혼동하고 싶지 않습니다.<br>열을 추출하지 않으면 매우 중요하므로 모델 Title을 입력 Sex하는 것을 잊지 마십시오 !</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">y = train_data[<span class="string">&#x27;Survived&#x27;</span>]</span><br><span class="line">features = [<span class="string">&#x27;Pclass&#x27;</span>, <span class="string">&#x27;Fare&#x27;</span>, <span class="string">&#x27;Title&#x27;</span>, <span class="string">&#x27;Embarked&#x27;</span>, <span class="string">&#x27;Fam_type&#x27;</span>, <span class="string">&#x27;Ticket_len&#x27;</span>, <span class="string">&#x27;Ticket_lett&#x27;</span>]</span><br><span class="line">X = train_data[features]</span><br><span class="line">X.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Pclass</th>
+      <th>Fare</th>
+      <th>Title</th>
+      <th>Embarked</th>
+      <th>Fam_type</th>
+      <th>Ticket_len</th>
+      <th>Ticket_lett</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3</td>
+      <td>7.2500</td>
+      <td>Mr</td>
+      <td>S</td>
+      <td>Small</td>
+      <td>9</td>
+      <td>A/</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>71.2833</td>
+      <td>Mrs</td>
+      <td>C</td>
+      <td>Small</td>
+      <td>8</td>
+      <td>PC</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>7.9250</td>
+      <td>Miss</td>
+      <td>S</td>
+      <td>Solo</td>
+      <td>16</td>
+      <td>ST</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>53.1000</td>
+      <td>Mrs</td>
+      <td>S</td>
+      <td>Small</td>
+      <td>6</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3</td>
+      <td>8.0500</td>
+      <td>Mr</td>
+      <td>S</td>
+      <td>Solo</td>
+      <td>6</td>
+      <td>37</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>EDA에서 학습 및 테스트 데이터 모두에 누락 된 값이 있고 처리 할 여러 범주 형 변수가 있다는 것을 기억하기 때문에 파이프 라인을 사용하여 모든 작업을 단순화하기로 결정했습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">numerical_cols = [<span class="string">&#x27;Fare&#x27;</span>]</span><br><span class="line">categorical_cols = [<span class="string">&#x27;Pclass&#x27;</span>, <span class="string">&#x27;Title&#x27;</span>, <span class="string">&#x27;Embarked&#x27;</span>, <span class="string">&#x27;Fam_type&#x27;</span>, <span class="string">&#x27;Ticket_len&#x27;</span>, <span class="string">&#x27;Ticket_lett&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 수치 데이터 전처리</span></span><br><span class="line">numerical_transformer = SimpleImputer(strategy=<span class="string">&#x27;median&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 범주 형 데이터 전처리</span></span><br><span class="line">categorical_transformer = Pipeline(steps=[</span><br><span class="line">    (<span class="string">&#x27;imputer&#x27;</span>, SimpleImputer(strategy=<span class="string">&#x27;most_frequent&#x27;</span>)),</span><br><span class="line">    (<span class="string">&#x27;onehot&#x27;</span>, OneHotEncoder(handle_unknown=<span class="string">&#x27;ignore&#x27;</span>))</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 숫자 및 범주 데이터에 대한 번들 전처리</span></span><br><span class="line">preprocessor = ColumnTransformer(</span><br><span class="line">    transformers=[</span><br><span class="line">        (<span class="string">&#x27;num&#x27;</span>, numerical_transformer, numerical_cols),</span><br><span class="line">        (<span class="string">&#x27;cat&#x27;</span>, categorical_transformer, categorical_cols)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 번들 전처리 및 모델링 코드</span></span><br><span class="line">titanic_pipeline = Pipeline(steps=[</span><br><span class="line">    (<span class="string">&#x27;preprocessor&#x27;</span>, preprocessor),</span><br><span class="line">    (<span class="string">&#x27;model&#x27;</span>, RandomForestClassifier(random_state=<span class="number">0</span>, n_estimators=<span class="number">500</span>, max_depth=<span class="number">5</span>))</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련 데이터 전처리, 모델 적합</span></span><br><span class="line">titanic_pipeline.fit(X,y)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;Cross validation score: &#123;:.3f&#125;&#x27;</span>.<span class="built_in">format</span>(cross_val_score(titanic_pipeline, X, y, cv=<span class="number">10</span>).mean()))</span><br></pre></td></tr></table></figure>
+
+<pre><code>Cross validation score: 0.826</code></pre>
+<p>이제 테스트 데이터에서 predict 메서드를 호출하기 만하면 예측을 수행 할 준비가되었습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X_test = test_data[features]</span><br><span class="line">X_test.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Pclass</th>
+      <th>Fare</th>
+      <th>Title</th>
+      <th>Embarked</th>
+      <th>Fam_type</th>
+      <th>Ticket_len</th>
+      <th>Ticket_lett</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3</td>
+      <td>7.8292</td>
+      <td>Mr</td>
+      <td>Q</td>
+      <td>Solo</td>
+      <td>6</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>7.0000</td>
+      <td>Mrs</td>
+      <td>S</td>
+      <td>Small</td>
+      <td>6</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>9.6875</td>
+      <td>Mr</td>
+      <td>Q</td>
+      <td>Solo</td>
+      <td>6</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>8.6625</td>
+      <td>Mr</td>
+      <td>S</td>
+      <td>Solo</td>
+      <td>6</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3</td>
+      <td>12.2875</td>
+      <td>Mrs</td>
+      <td>S</td>
+      <td>Small</td>
+      <td>7</td>
+      <td>31</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 테스트 데이터 전처리, 예측 얻기</span></span><br><span class="line">predictions = titanic_pipeline.predict(X_test)</span><br></pre></td></tr></table></figure>
+
+<p>지금해야 할 일은 제출 파일로 변환하는 것입니다!</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">output = pd.DataFrame(&#123;<span class="string">&#x27;PassengerId&#x27;</span>: test_data.PassengerId, <span class="string">&#x27;Survived&#x27;</span>: predictions&#125;)</span><br><span class="line">output.to_csv(<span class="string">&#x27;my_submission.csv&#x27;</span>, index=<span class="literal">False</span>)</span><br><span class="line">files.download(<span class="string">&quot;my_submission.csv&quot;</span>) <span class="comment"># 구글 코랩 다운로드 추가 https://stackoverflow.com/questions/49394737/exporting-data-from-google-colab-to-local-machine</span></span><br><span class="line">print(<span class="string">&#x27;Your submission was successfully saved!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>&lt;IPython.core.display.Javascript object&gt;
+
+
+
+&lt;IPython.core.display.Javascript object&gt;
+
+
+Your submission was successfully saved!</code></pre>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>이것은 저의 첫 Kaggle 대회였으며 한 번에 한 단계 씩 순위표를 오르는 것은 정말 멋진 여정이었습니다.<br>아래에서 2020 년 9 월 Titanic LB 점수의 히스토그램을 확인할 수 있습니다. 현재이 노트북은 상위 4 %에 속합니다.  이것은 매우 좋은 점수이지만 영리한 그룹화 접근 방식과 모델 앙상블 링으로 분류기를 개선 할 수 있습니다.<br>당신은이 작업을 수행하는 방법에 관심이 있다면, 여기 당신이 도달 0.82775가 (검사 할 수 있음을 내 다른 노트북 찾을 수 이 지금은 최고 점수의 몇 가지 아이디어를 가지고뿐만 아니라 아웃).<br>지금은이 노트북이 유용했거나 마음에 들었다면 알려주세요. 정말 감사하겠습니다!<br>이 대회에 행운을 빕니다. 다음 대회에서 만나요.</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>캐글 Titanic EDA + Simple Model [0.80622] 분석</p><p><a href="https://github.com/idanjfhgkwl/idanjfhgkwl.github.io/2020/12/01/study/kaggle_titanic-eda-simple-model-0-80622_mviola/">https://github.com/idanjfhgkwl/idanjfhgkwl.github.io/2020/12/01/study/kaggle_titanic-eda-simple-model-0-80622_mviola/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>JustY</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2020-12-01</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2020-12-01</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/" alt="Alipay"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="/" alt="Wechat"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2020/12/01/study/%EC%82%AC%EC%9D%B4%ED%82%B7%EB%9F%B0%EC%9C%BC%EB%A1%9C_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">파이썬 머신러닝 완벽가이드 2장</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2020/11/30/study/4.2%20%EA%B2%B0%EC%A0%95%20%ED%8A%B8%EB%A6%AC_Ver01/"><span class="level-item">파이썬 머신러닝 완벽가이드 4장</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">14</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Category</p><a href="/categories"><p class="title">1</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/study/"><span class="level-start"><span class="level-item">study</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-12-01T01:06:39.359Z">2020-12-01</time></p><p class="title"><a href="/2020/12/01/study/%EC%82%AC%EC%9D%B4%ED%82%B7%EB%9F%B0%EC%9C%BC%EB%A1%9C_%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94_%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/">파이썬 머신러닝 완벽가이드 2장</a></p><p class="categories"><a href="/categories/study/">study</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-12-01T01:06:14.981Z">2020-12-01</time></p><p class="title"><a href="/2020/12/01/study/kaggle_titanic-eda-simple-model-0-80622_mviola/">캐글 Titanic EDA + Simple Model [0.80622] 분석</a></p><p class="categories"><a href="/categories/study/">study</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-11-30T00:15:42.563Z">2020-11-30</time></p><p class="title"><a href="/2020/11/30/study/4.2%20%EA%B2%B0%EC%A0%95%20%ED%8A%B8%EB%A6%AC_Ver01/">파이썬 머신러닝 완벽가이드 4장</a></p><p class="categories"><a href="/categories/study/">study</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-11-30T00:15:42.532Z">2020-11-30</time></p><p class="title"><a href="/2020/11/30/study/4.3_%EC%95%99%EC%83%81%EB%B8%94%ED%95%99%EC%8A%B5_4.4_%EB%9E%9C%EB%8D%A4%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8_4.5_GBM_Ver01/">파이썬 머신러닝 완벽가이드 4장</a></p><p class="categories"><a href="/categories/study/">study</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-11-26T07:09:18.836Z">2020-11-26</time></p><p class="title"><a href="/2020/11/26/study/pyqt5_ex03/">PyQt5 Tutorial - PyQt5 기초 (Basics)</a></p><p class="categories"><a href="/categories/study/">study</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2020/12/"><span class="level-start"><span class="level-item">December 2020</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/11/"><span class="level-start"><span class="level-item">November 2020</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/10/"><span class="level-start"><span class="level-item">October 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="제목" height="28"></a><p class="is-size-7"><span>&copy; 2020 JustY</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
